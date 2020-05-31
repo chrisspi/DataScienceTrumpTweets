@@ -15,14 +15,14 @@ for i in jsonFileList:
 
 with open(dataPath + 'trumptwitterarchive.csv', 'w', newline='') as csvfile:
     jsonwriter = csv.writer(csvfile)
-    for row in jsonData:
+    for column in jsonData:
         jsonwriter.writerow([
-            row["source"],
-            row["id_str"],
-            row["text"],
-            row["created_at"],
-            row["retweet_count"],
-            row["in_reply_to_user_id_str"],
-            row["favorite_count"],
-            row["is_retweet"]
+            column["source"],
+            column["id_str"],
+            column["text"],
+            column["created_at"],
+            column["retweet_count"],
+            column["in_reply_to_user_id_str"],
+            column["favorite_count"],
+            column["is_retweet"]
             ])
