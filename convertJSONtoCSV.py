@@ -2,19 +2,21 @@ import json
 import csv
 import os
 
-dataPath = "data/trumptwitterarchive/"
+DATAPATH = "data/trumptwitterarchive/"
 
-jsonFileList = os.listdir(dataPath)
+jsonFileList = os.listdir(DATAPATH)
 
 jsonData = []
 
 for i in jsonFileList:
     if i.endswith(".json"):
-        with open(dataPath + i, 'r') as json_file:
+        with open(DATAPATH + i, 'r') as json_file:
             jsonData += json.load(json_file)
 
-with open(dataPath + 'trumptwitterarchive.csv', 'w', newline='') as csvfile:
+with open(DATAPATH + 'trumptwitterarchive.csv', 'w', newline='') as csvfile:
     jsonwriter = csv.writer(csvfile)
+
+    # write data
     for column in jsonData:
         jsonwriter.writerow([
             column["source"],
