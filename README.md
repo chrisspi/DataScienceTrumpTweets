@@ -5,7 +5,9 @@ Data Sources
 We collect tweets of Donald Trump from two different sources.
 
 1. [The Trump Twitter Archive](http://www.trumptwitterarchive.com/about)
+    Format: source, id_str, text, created_at, retweet_count, in_reply_to_user_id_str, favorite_count, is_retweet
 2. [Trump Tweets repository from Kaggle](https://www.kaggle.com/austinreese/trump-tweets)
+    Format: id, link, content, date, retweets, favorites, mentions, hashtags
 
 ## Getting the Data from trumptwitterarchive
 

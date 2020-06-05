@@ -16,6 +16,18 @@ for i in jsonFileList:
 with open(DATAPATH + 'trumptwitterarchive.csv', 'w', newline='') as csvfile:
     jsonwriter = csv.writer(csvfile)
 
+    # write header
+    jsonwriter.writerow([
+        "source",
+        "id_str",
+        "text",
+        "created_at",
+        "retweet_count",
+        "in_reply_to_user_id_str",
+        "favorite_count",
+        "is_retweet"
+        ])
+
     # write data
     for column in jsonData:
         jsonwriter.writerow([
