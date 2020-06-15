@@ -1,10 +1,21 @@
+"""
+This Script scrapes tweets of Donald Trump.
+Because of the limitations of Twitter there can only be done a fixed amount
+of requests to the Twitter website every 15 minutes.
+This script trys to avoid a limit error by downloading tweets for a time span
+of one year and then waiting 15 minutes.
+
+Another limitation of this script is the accuracy of the retweets count.
+Unfortunalty the GetOldTweets3 Library only returns the count of pure retweets
+not the count of pure retweets + count of retweets with comments.
+This results in a generally lower number of retweets in the data set
+"""
 import time
 import GetOldTweets3 as got
 import csv
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 DATAPATH = "data/"
-MAXTWEETS = 10
 MAXDATE = date.fromisoformat('2020-04-15')
 DELTADAYS = 360
 
@@ -55,7 +66,7 @@ with open(DATAPATH + 'qualityCheckData.csv', 'w', newline='') as csvfile:
                                                 .setSince(startDate.isoformat())\
                                                 .setUntil(endDate.isoformat())
 
-        print("Time to sleep for 15 minutes.")
+        print( datetime.now().time(), ": Time to sleep for 15 minutes.")
         time.sleep(60 * 15)
     
     # write the last portion of tweets
